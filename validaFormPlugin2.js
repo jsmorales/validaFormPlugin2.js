@@ -129,6 +129,11 @@
 	            
 				//-----------------------------------------------------------------------------------------------------
 
+				if (  ( (progreso > 0) || (progreso == 100) ) && ($(this).val() == "") ) {
+					$(this).attr('pasoValida',0);
+					descontador(pro_form_cont,matematica_progress(min_width));
+				};
+
 
 	          }else if ( ($(this)[0]["value"]!="") && ($(this)[0]["required"] == true) ){
 	            

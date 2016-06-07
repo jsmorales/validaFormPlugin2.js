@@ -3,7 +3,7 @@
 	var progreso = 0;
 	var style_progreso = 0;
 
-	$.fn.validaForm = function (min_width){
+	$.fn.validaForm = function (min_width,icons,barra,pariente){
 
 		var selector = $(this);
 
@@ -79,7 +79,7 @@
 
 		});
 
-		//console.log(cant_dom_req);		
+		console.log(cant_dom_req);		
 
 		function matematica_progress(min_width){
 
@@ -121,18 +121,41 @@
 
 	            console.log(abuelo);
 
-	            abuelo.attr('class', 'form-group has-error has-feedback');
+	            if (pariente == 'dad') {
+	            	padre.attr('class', 'form-group has-error has-feedback');
+	            } else if (pariente == 'grandpa'){
+	            	abuelo.attr('class', 'form-group has-error has-feedback');
+	            };
 
-	            padre.children('span').remove();
+	            //abuelo.attr('class', 'form-group has-error has-feedback');
+	            //padre.attr('class', 'form-group has-error has-feedback');
 
-	            $(this).after('<span class="glyphicon glyphicon-remove form-control-feedback validaRemove" aria-hidden="true"></span>');
+	            //----------------------------------------------------------
+
+	            if (icons == true) {
+
+	            	if (pariente == 'dad') {
+		            	padre.children('span').remove();
+		            } else if (pariente == 'grandpa'){
+		            	abuelo.children('span').remove();
+		            };
+		            
+	            	//padre.children('span').remove();
+
+	            	$(this).after('<span class="glyphicon glyphicon-remove form-control-feedback validaRemove" aria-hidden="true"></span>');
+
+	            };
+	            
+	            if (  ( (progreso > 0) || (progreso == 100) ) && ($(this).val() == "") ) {
+					$(this).attr('pasoValida',0);
+
+					if (barra == true) {
+
+						descontador(pro_form_cont,matematica_progress(min_width));
+					};
+				};
 	            
 				//-----------------------------------------------------------------------------------------------------
-
-				if (  ( (progreso > 0) || (progreso == 100) ) && ($(this).val() == "") ) {
-					$(this).attr('pasoValida',0);
-					descontador(pro_form_cont,matematica_progress(min_width));
-				};
 
 
 	          }else if ( ($(this)[0]["value"]!="") && ($(this)[0]["required"] == true) ){
@@ -145,17 +168,40 @@
 
 	            //console.log(abuelo);
 
-	            abuelo.attr('class', 'form-group has-success has-feedback');
+	            if (pariente == 'dad') {
+	            	padre.attr('class', 'form-group has-success has-feedback');
+	            } else if (pariente == 'grandpa'){
+	            	abuelo.attr('class', 'form-group has-success has-feedback');
+	            };
 
-	            console.log(padre.children('span').remove());
+	            //abuelo.attr('class', 'form-group has-success has-feedback');
+	            padre.attr('class', 'form-group has-success has-feedback');
 
-	            $(this).after('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
+	            //------------------------------------------------------------
+
+	            if (icons == true) {
+
+	            	if (pariente == 'dad') {
+		            	padre.children('span').remove();
+		            } else if (pariente == 'grandpa'){
+		            	abuelo.children('span').remove();
+		            };
+
+	            	//padre.children('span').remove();
+
+	            	$(this).after('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
+
+	            };	            
 
 	            //-----------------------------------------------------------------------------------------------------	          
 
 				if ( ( (progreso == 0) || (progreso < 100) ) && ($(this).attr('pasoValida') == 0) ) {
 					$(this).attr('pasoValida',1);
-					contador(pro_form_cont,matematica_progress(min_width));
+
+					if (barra == true) {
+						contador(pro_form_cont,matematica_progress(min_width));
+					};
+
 				}else if ( ( (progreso == 0) || (progreso < 100) ) && ($(this).attr('pasoValida') == 1) ) {
 					
 				};

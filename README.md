@@ -4,9 +4,12 @@ Plugin que valida los controles de un formulario que tengan el atributo required
 
 <h2>Atributos</h2>
 
-<b>min_width</b> = Valor de width minimo que debe llevar la barra de progreso, esta en "em" Ej: 45em.
+<b>min_width</b> = Valor de width minimo en entero o decimal que debe llevar la barra de progreso, esta en "em" Ej: 45em.
+<b>icons</b> = Mostrar iconos, true/false.
+<b>barra</b> = Mostrar barra, true/false.
+<b>pariente</b> = que pariente usa dentro de los divs? 'grandpa','dad', usa los divs que contienen al control que se esta validando.
 
 
 <h2>Set del Plugin</h2>
 
-$("selector").validaForm('min_width');
+$("selector").validaForm('min_width',true/false,true/false,'grandpa'/'dad');

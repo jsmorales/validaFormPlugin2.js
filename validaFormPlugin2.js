@@ -119,7 +119,7 @@
 
 	            var abuelo = padre.parent();
 
-	            console.log(abuelo);
+	            console.log(pariente);
 
 	            if (pariente == 'dad') {
 	            	padre.attr('class', 'form-group has-error has-feedback');
@@ -134,13 +134,15 @@
 
 	            if (icons == true) {
 
+	            	/*
 	            	if (pariente == 'dad') {
 		            	padre.children('span').remove();
 		            } else if (pariente == 'grandpa'){
 		            	abuelo.children('span').remove();
-		            };
+		            };*/
 		            
-	            	//padre.children('span').remove();
+	            	padre.children('span').remove();
+	            	//console.log(padre.children('span'));
 
 	            	$(this).after('<span class="glyphicon glyphicon-remove form-control-feedback validaRemove" aria-hidden="true"></span>');
 
@@ -166,7 +168,7 @@
 
 	            var abuelo = padre.parent();
 
-	            //console.log(abuelo);
+	            console.log(pariente);
 
 	            if (pariente == 'dad') {
 	            	padre.attr('class', 'form-group has-success has-feedback');
@@ -175,20 +177,20 @@
 	            };
 
 	            //abuelo.attr('class', 'form-group has-success has-feedback');
-	            padre.attr('class', 'form-group has-success has-feedback');
+	            //padre.attr('class', 'form-group has-success has-feedback');
 
 	            //------------------------------------------------------------
 
 	            if (icons == true) {
 
-	            	if (pariente == 'dad') {
+	            	/*if (pariente == 'dad') {
 		            	padre.children('span').remove();
 		            } else if (pariente == 'grandpa'){
 		            	abuelo.children('span').remove();
-		            };
+		            };*/
 
-	            	//padre.children('span').remove();
-
+	            	padre.children('span').remove();
+	            	
 	            	$(this).after('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
 
 	            };	            
